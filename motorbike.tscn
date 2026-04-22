@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://wdvlcoibebj2"]
+
+[ext_resource type="Texture2D" uid="uid://0t0nrkdvlt3k" path="res://motorbike.png" id="1_o3spe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbke7"]
+atlas = ExtResource("1_o3spe")
+region = Rect2(20, 0, 462, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbaku"]
+atlas = ExtResource("1_o3spe")
+region = Rect2(944, 0, 462, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3spe"]
+atlas = ExtResource("1_o3spe")
+region = Rect2(20, 0, 462, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp7oy"]
+atlas = ExtResource("1_o3spe")
+region = Rect2(20, 0, 462, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8qka"]
+atlas = ExtResource("1_o3spe")
+region = Rect2(482, 0, 462, 768)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sopj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbke7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbaku")
+}],
+"loop": false,
+"name": &"crash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3spe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp7oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8qka")
+}],
+"loop": true,
+"name": &"whellie",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3spe"]
+
+[node name="Motorbike" type="CharacterBody2D" unique_id=158111043]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682379444]
+position = Vector2(238, 409)
+sprite_frames = SubResource("SpriteFrames_2sopj")
+autoplay = "crash"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150150275]
+shape = SubResource("RectangleShape2D_o3spe")
+
+[node name="Fins" type="Area2D" parent="." unique_id=1558190737]
