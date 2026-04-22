@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wdvlcoibebj2"]
 
 [ext_resource type="Texture2D" uid="uid://0t0nrkdvlt3k" path="res://motorbike.png" id="1_o3spe"]
+[ext_resource type="Script" uid="uid://dj8affnr3nm4b" path="res://motorbike.gd" id="1_vbke7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbke7"]
 atlas = ExtResource("1_o3spe")
@@ -56,15 +57,49 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3spe"]
+size = Vector2(458.5, 813)
 
-[node name="Motorbike" type="CharacterBody2D" unique_id=158111043]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaku"]
+size = Vector2(2897.5, 7374)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682379444]
-position = Vector2(238, 409)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbke7"]
+size = Vector2(30018, 1317.25)
+
+[node name="main" type="Node2D" unique_id=1408809352]
+
+[node name="motorbike" type="CharacterBody2D" parent="." unique_id=1386109126]
+script = ExtResource("1_vbke7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="motorbike" unique_id=1682379444]
 sprite_frames = SubResource("SpriteFrames_2sopj")
-autoplay = "crash"
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150150275]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="motorbike" unique_id=1150150275]
 shape = SubResource("RectangleShape2D_o3spe")
 
-[node name="Fins" type="Area2D" parent="." unique_id=1558190737]
+[node name="Camera2D" type="Camera2D" parent="motorbike" unique_id=1477653127]
+zoom = Vector2(0.085, 0.085)
+limit_right = 1000000
+limit_bottom = 1000000
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+
+[node name="FinishLine" type="Area2D" parent="." unique_id=1558190737]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine" unique_id=1478378964]
+position = Vector2(22445.25, -116)
+shape = SubResource("RectangleShape2D_xbaku")
+
+[node name="BottomWall" type="StaticBody2D" parent="." unique_id=1674015306]
+position = Vector2(98, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall" unique_id=1254467515]
+position = Vector2(5800, 2692)
+shape = SubResource("RectangleShape2D_vbke7")
+
+[node name="TopWall" type="StaticBody2D" parent="." unique_id=1387052633]
+position = Vector2(396, -5417)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall" unique_id=1529052850]
+position = Vector2(5623, 1410)
+shape = SubResource("RectangleShape2D_vbke7")
